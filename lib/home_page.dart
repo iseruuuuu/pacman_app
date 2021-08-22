@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pacman_app/path.dart';
 import 'package:pacman_app/pixel.dart';
 
 class HomePage extends StatefulWidget {
@@ -56,13 +57,13 @@ class _HomePageState extends State<HomePage> {
                    return MyPixel(
                       innerColor: Colors.blue[800],
                       outerColor: Colors.blue[900],
-                      child: Text(index.toString()),
+                      // child: Text(index.toString()),
                     );
                   } else {
-                   return MyPixel(
+                   return MyPath(
                       innerColor: Colors.yellow,
                       outerColor: Colors.black,
-                      child: Text(index.toString()),
+                      // child: Text(index.toString()),
                     );
                   }
                 },
