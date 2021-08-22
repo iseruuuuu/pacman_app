@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> {
   ];
 
   void startGame() {
-    Timer.periodic(Duration(milliseconds: 150), (timer) {
+    Timer.periodic(const Duration(milliseconds: 150), (timer) {
       switch (direction) {
         case 'left':
           moveLeft();
