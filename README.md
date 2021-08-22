@@ -1,6 +1,10 @@
-# pacman_app
 
-# 自分用のメモ. 
+完成品　ーーー　未完成だけど、いいアウトプットになりました。  
+
+<img src = "https://user-images.githubusercontent.com/67954894/130353773-3fe0f898-7111-400d-a6fb-4597eb9645b9.png" width = 20%>
+
+
+
 
 途中経過①.   
 
