@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:pacman_app/path.dart';
 import 'package:pacman_app/pixel.dart';
