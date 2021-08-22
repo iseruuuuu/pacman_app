@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pacman_app/path.dart';
 import 'package:pacman_app/pixel.dart';
+import 'package:pacman_app/player.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -12,6 +13,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   static int numberInRow = 11;
   int numberOfSquares = numberInRow * 17;
+
+  int player = numberInRow * 15 + 1;
 
   List<int> barriers = [
     //枠の周りの値
@@ -32,9 +35,6 @@ class _HomePageState extends State<HomePage> {
     134,140,
     145,147,148,149,151,
     156,158,160,162,
-
-
-
   ];
 
   @override
@@ -53,7 +53,11 @@ class _HomePageState extends State<HomePage> {
                   crossAxisCount: numberInRow,
                 ),
                 itemBuilder: (BuildContext context, int index) {
-                  if (barriers.contains(index)) {
+                  if(player == index) {
+                    return MyPlayer(
+
+                    );
+                  } else if (barriers.contains(index)) {
                    return MyPixel(
                       innerColor: Colors.blue[800],
                       outerColor: Colors.blue[900],
