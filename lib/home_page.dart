@@ -20,6 +20,8 @@ class _HomePageState extends State<HomePage> {
 
   String direction = 'right';
 
+  List<int> food = [];
+
   List<int> barriers = [
     //枠の周りの値
     0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
@@ -41,8 +43,17 @@ class _HomePageState extends State<HomePage> {
     156, 158, 160, 162,
   ];
 
+  bool mouthClosed = false;
+  bool preGame = true;
+
   void startGame() {
-    Timer.periodic(const Duration(milliseconds: 150), (timer) {
+    preGame = false;
+    getFood();
+    Timer.periodic(const Duration(milliseconds: 300), (timer) {
+      mouthClosed = !mouthClosed;
+      if (food.contains(player)) {
+        food.remove(player);
+      }
       switch (direction) {
         case 'left':
           moveLeft();
@@ -58,6 +69,14 @@ class _HomePageState extends State<HomePage> {
           break;
       }
     });
+  }
+
+  void getFood() {
+    for (int i=0; i<numberOfSquares; i++) {
+      if (!barriers.contains(i)) {
+        food.add(i);
+      }
+    }
   }
 
   void moveLeft() {
@@ -126,33 +145,34 @@ class _HomePageState extends State<HomePage> {
                     if (player == index) {
                       switch (direction) {
                         case 'left':
-                          return MyPlayer();
-                          break;
+                          return Transform.rotate(
+                            angle: pi,
+                            child: const MyPlayer(),
+                          );
                         case 'right':
-                          return Transform.rotate(angle: pi, child: MyPlayer());
-                          break;
+                          return const MyPlayer();
                         case 'up':
                           return Transform.rotate(
-                              angle: 3 * pi / 2, child: MyPlayer());
-                          break;
+                            angle: 3 * pi / 2,
+                            child: const MyPlayer(),
+                          );
                         case 'down':
                           return Transform.rotate(
-                              angle: pi / 2, child: MyPlayer());
-                          break;
+                            angle: pi / 2,
+                            child: const MyPlayer(),
+                          );
                         default:
-                        return  MyPlayer();
+                          return const MyPlayer();
                       }
                     } else if (barriers.contains(index)) {
                       return MyPixel(
                         innerColor: Colors.blue[800],
                         outerColor: Colors.blue[900],
-                        // child: Text(index.toString()),
                       );
                     } else {
                       return MyPath(
                         innerColor: Colors.yellow,
                         outerColor: Colors.black,
-                        // child: Text(index.toString()),
                       );
                     }
                   },
